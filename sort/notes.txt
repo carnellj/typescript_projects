@@ -1,0 +1,10 @@
+tsc --init //generates the default tsconfig
+tsc -w //watch all of the files
+
+npm init -y //Creates a default package.json
+npm install nodemon concurrently   //Install nodemond and concurrently
+
+Nodemon watches our index.js and runs code everytime it changes
+Concurrently watches multiple scripts and then runs them concurrently
+
+npm start //Runs our start scruots
