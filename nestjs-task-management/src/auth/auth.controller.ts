@@ -1,4 +1,11 @@
-import { Controller, Post, Body, Inject, ValidationPipe } from '@nestjs/common';
+import {
+  Controller,
+  Post,
+  Body,
+  Inject,
+  ValidationPipe,
+  UnauthorizedException,
+} from '@nestjs/common';
 import { AuthCredentialsDTO } from './dto/auth-credentials.dto';
 import { Injector } from '@nestjs/core/injector/injector';
 import { AuthService } from './auth.service';
@@ -12,5 +19,16 @@ export class AuthController {
     @Body(ValidationPipe) authCredentialsDTO: AuthCredentialsDTO,
   ): Promise<void> {
     return this.authService.signup(authCredentialsDTO);
+  }
+
+  @Post('/signin')
+  signin(@Body(ValidationPipe) authCredentialsDTO: AuthCredentialsDTO) {
+    const results = this.authService.signin(authCredentialsDTO);
+
+    if (results === null) {
+      throw new UnauthorizedException();
+    }
+
+    return results;
   }
 }
