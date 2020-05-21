@@ -5,10 +5,16 @@ import {
   Inject,
   ValidationPipe,
   UnauthorizedException,
+  UseGuards,
+  Req,
 } from '@nestjs/common';
 import { AuthCredentialsDTO } from './dto/auth-credentials.dto';
 import { Injector } from '@nestjs/core/injector/injector';
 import { AuthService } from './auth.service';
+import {JwtPayload} from './jwt-payload-interface'
+import { AuthGuard } from '@nestjs/passport';
+import { GetUser } from './get-user-decorator';
+import { User } from './user.entity';
 
 @Controller('auth')
 export class AuthController {
@@ -22,7 +28,7 @@ export class AuthController {
   }
 
   @Post('/signin')
-  signin(@Body(ValidationPipe) authCredentialsDTO: AuthCredentialsDTO) {
+  signin(@Body(ValidationPipe) authCredentialsDTO: AuthCredentialsDTO): Promise<{accessToken: string}> {
     const results = this.authService.signin(authCredentialsDTO);
 
     if (results === null) {
@@ -31,4 +37,10 @@ export class AuthController {
 
     return results;
   }
+
+  // @Post('/test')
+  // @UseGuards(AuthGuard())
+  // test(@GetUser() user:User){
+  //   console.log(user)
+  // }  
 }
