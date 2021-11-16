@@ -9,7 +9,7 @@
   "dependencies": {
     "@types/aws-sdk": "^2.7.0",
     "@types/twilio": "^2.11.0",
-    "aws-sdk": "^2.696.0",
+    "aws-sdk": "^2.814.0",
     "axios": "^0.19.2",
     "node-fetch": "^2.6.0",
     "query-string": "^6.13.1",
