@@ -11,7 +11,7 @@
     "@types/twilio": "^2.11.0",
     "aws-sdk": "^2.696.0",
     "axios": "^0.19.2",
-    "node-fetch": "^2.6.0",
+    "node-fetch": "^2.6.7",
     "query-string": "^6.13.1",
     "source-map-support": "^0.5.10",
     "twilio": "^3.46.0"
